@@ -2,13 +2,13 @@ import ReactModal from "react-modal";
 
 import { useState, useEffect } from "react";
 import "./App.css";
-import SearchBar from "./components/SearchBar/SearchBar.jsx";
-import ImageGallery from "./components/ImageGallery/ImageGallery.jsx";
-import { fetchImages } from "./services/images-api.js";
-import Loader from "./components/Loader/Loader.jsx";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
-import ImageModal from "./components/ImageModal/ImageModal.jsx";
+import SearchBar from "../SearchBar/SearchBar.js";
+import ImageGallery from "../ImageGallery/ImageGallery.js";
+import { fetchImages } from "../../services/images-api.js";
+import Loader from "../Loader/Loader.js";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.js";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.js";
+import ImageModal from "../ImageModal/ImageModal.js";
 import toast, { Toaster } from "react-hot-toast";
 
 ReactModal.setAppElement("#root");
