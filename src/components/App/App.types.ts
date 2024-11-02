@@ -1,4 +1,4 @@
-interface Image {
+export interface Image {
   id: string;
   urls: {
     regular: string;
@@ -13,12 +13,12 @@ interface Image {
   alt_description: string;
 }
 
-interface User {
+export interface User {
   name: string;
   profileUrl: string;
 }
 
-interface ApiResponse {
+export interface ApiResponse {
   results: Image[];
   total_pages: number;
 }

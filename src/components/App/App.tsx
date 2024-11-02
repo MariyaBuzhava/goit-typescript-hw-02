@@ -10,6 +10,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage.js";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.js";
 import ImageModal from "../ImageModal/ImageModal.js";
 import toast, { Toaster } from "react-hot-toast";
+import { ApiResponse, Image, User } from "./App.types";
 
 ReactModal.setAppElement("#root");
 
@@ -32,7 +33,7 @@ function App() {
       try {
         setError(false);
         setLoading(true);
-        const data = await fetchImages(query, page);
+        const data: ApiResponse = await fetchImages(query, page);
 
         setImages((prev) => [...prev, ...data.results]);
 
