@@ -14,17 +14,17 @@ import toast, { Toaster } from "react-hot-toast";
 ReactModal.setAppElement("#root");
 
 function App() {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
   const [totalPages, setTotalPages] = useState(0);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [user, setUser] = useState({});
-  const [likes, setLikes] = useState(0);
-  const [altDescription, setAltDescription] = useState("");
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [likes, setLikes] = useState<number>(0);
+  const [altDescription, setAltDescription] = useState<string>("");
 
   useEffect(() => {
     if (!query) return;
@@ -50,7 +50,7 @@ function App() {
     setPage((prev) => prev + 1);
   };
 
-  const handleSetQuery = (topic) => {
+  const handleSetQuery = (topic: string) => {
     if (topic.trim() === "") {
       toast.error("Please enter a search query.");
       return;
@@ -62,7 +62,12 @@ function App() {
     }
   };
 
-  const openModal = (imageUrl, user, likes, alt_description) => {
+  const openModal = (
+    imageUrl: string,
+    user: User,
+    likes: number,
+    alt_description: string
+  ) => {
     setSelectedImage(imageUrl);
     setUser(user);
     setLikes(likes);
@@ -83,7 +88,7 @@ function App() {
       {images.length > 0 && (
         <ImageGallery
           images={images}
-          onImageClick={(image) =>
+          onImageClick={(image: Image) =>
             openModal(
               image.urls.regular,
               {
