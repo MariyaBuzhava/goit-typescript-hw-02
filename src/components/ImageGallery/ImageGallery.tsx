@@ -1,8 +1,16 @@
+import { Image } from "../App/App.types";
+import ImageCard from "../ImageCard/ImageCard";
 import c from "./ImageGallery.module.css";
 
-import ImageCard from "../ImageCard/ImageCard.jsx";
+interface ImageGalleryProps {
+  images: Image[];
+  onImageClick: (image: Image) => void;
+}
 
-const ImageGallery = ({ images, onImageClick }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({
+  images,
+  onImageClick,
+}) => {
   if (!images || images.length === 0) {
     return <p>No images found</p>;
   }
