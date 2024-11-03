@@ -1,6 +1,7 @@
 import { Image } from "../App/App.types";
 import ImageCard from "../ImageCard/ImageCard";
 import c from "./ImageGallery.module.css";
+import { motion } from "framer-motion";
 
 interface ImageGalleryProps {
   images: Image[];
@@ -19,11 +20,15 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
     <div>
       <ul className={c.imageGallery}>
         {images.map((image) => (
-          <ImageCard
+          <motion.div
             key={image.id}
-            image={image}
-            onClick={() => onImageClick(image)}
-          />
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ImageCard image={image} onClick={() => onImageClick(image)} />
+          </motion.div>
         ))}
       </ul>
     </div>

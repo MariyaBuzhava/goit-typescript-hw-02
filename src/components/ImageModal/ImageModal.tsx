@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import c from "./ImageModal.module.css";
 import ReactModal from "react-modal";
+import { motion } from "framer-motion";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -43,7 +44,25 @@ const ImageModal: React.FC<ImageModalProps> = ({
       shouldCloseOnOverlayClick={true}
       overlayClassName={c.modalOverlay}
     >
-      <div className={c.modalBody}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        className={c.modalBody}
+      >
+        <button className={c.closeButton} onClick={onClose}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M18 6L6 18M6 6l12 12" stroke="#0288d1" strokeWidth="2" />
+          </svg>
+        </button>
+
         <img src={imageUrl} alt={altDescription || "Image"} />
 
         <div className={c.info}>
@@ -59,7 +78,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             </p>
           )}
         </div>
-      </div>
+      </motion.div>
     </ReactModal>
   );
 };
