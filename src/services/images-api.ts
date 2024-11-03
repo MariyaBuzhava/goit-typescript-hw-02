@@ -10,7 +10,7 @@ export const fetchImages = async (
 ): Promise<ApiResponse> => {
   const response = await axios.get<ApiResponse>(`/search/photos`, {
     params: {
-      client_id: process.env.REACT_APP_UNSPLASH_API_KEY,
+      client_id: "DANKlgAbccLybPfVyNlkfj3soumKRCnnLisBk1-go5g",
       query: query,
       page: page,
       per_page: perPage,
